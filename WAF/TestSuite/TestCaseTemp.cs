@@ -12,8 +12,6 @@ namespace WAF.TestSuite
         {
             Browser.Open();
             PagesTemp.NavigateToLoginPage();
-            Browser.GoBack();
-            PagesTemp.InsertRandomName();
         }
     }
 }

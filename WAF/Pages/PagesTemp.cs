@@ -1,7 +1,6 @@
 ﻿using OpenQA.Selenium;
 using WAF.BaseClasses;
 using WAF.Framework.BaseClasses;
-using WAF.Framework.HelperClasses;
 
 namespace WAF.Pages
 {
@@ -25,10 +24,6 @@ namespace WAF.Pages
         public static void VerifyPageElements()
         {
             VerifyElement.IsPresent(header);
-        }
-        internal static void InsertRandomName()
-        {
-            Driver.InsertText(searchField, NameGenerator.RandomName(10));
         }
         #endregion
     }
