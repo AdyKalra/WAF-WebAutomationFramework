@@ -1,0 +1,9 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">  
+  <Target Name="CopyFFDriverToBin" BeforeTargets="AfterBuild">
+    <PropertyGroup>
+      <FFDriverSrcPath>$(MSBuildThisFileDirectory)..\driver\geckodriver.exe</FFDriverSrcPath>
+      <FFDriverTargetPath Condition=" '$(FFDriverTargetPath)' == '' ">$(TargetDir)</FFDriverTargetPath>
+    </PropertyGroup>
+    <Copy SourceFiles="$(FFDriverSrcPath)" DestinationFiles="$(FFDriverTargetPath)geckodriver.exe" SkipUnchangedFiles="true"></Copy>
+  </Target>
+</Project>
