@@ -56,9 +56,81 @@ Include these refrences into your new project
       <Private>True</Private>
     </Reference>
     
-  <Import Project="..\..\WAF\WAF-WebAutomationFramework\WAF\packages\IEDriver\3.0.0.1\build\Selenium.WebDriver.IEDriver.targets" Condition="Exists('..\..\WAF\WAF-WebAutomationFramework\WAF\packages\IEDriver\3.0.0.1\build\Selenium.WebDriver.IEDriver.targets')" />
-  <Import Project="..\..\WAF\WAF-WebAutomationFramework\WAF\packages\FFDriver\0.13\build\Selenium.WebDriver.FFDriver.targets" Condition="Exists('..\..\WAF\WAF-WebAutomationFramework\WAF\packages\FFDriver\0.13\build\Selenium.WebDriver.FFDriver.targets')" />
-  <Import Project="..\..\WAF\WAF-WebAutomationFramework\WAF\packages\ChromeDriver\2.27.0\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('..\..\WAF\WAF-WebAutomationFramework\WAF\packages\ChromeDriver\2.27.0\build\Selenium.WebDriver.ChromeDriver.targets')" />
-  <Import Project="..\..\WAF\WAF-WebAutomationFramework\WAF\packages\PhantomJS\2.1.1\build\Selenium.WebDriver.PhantomJSDriver.targets" Condition="Exists('..\..\WAF\WAF-WebAutomationFramework\WAF\packages\PhantomJS\2.1.1\build\Selenium.WebDriver.PhantomJSDriver.targets')" />
+    
+    <Import Project="..\..\WAF\WAF-WebAutomationFramework\WAF\packages\IEDriver\3.0.0.1\build\Selenium.WebDriver.IEDriver.targets" Condition="Exists('..\..\WAF\WAF-WebAutomationFramework\WAF\packages\IEDriver\3.0.0.1\build\Selenium.WebDriver.IEDriver.targets')" /
+    <Import Project="..\..\WAF\WAF-WebAutomationFramework\WAF\packages\FFDriver\0.13\build\Selenium.WebDriver.FFDriver.targets" Condition="Exists('..\..\WAF\WAF-WebAutomationFramework\WAF\packages\FFDriver\0.13\build\Selenium.WebDriver.FFDriver.targets')" /
+    <Import Project="..\..\WAF\WAF-WebAutomationFramework\WAF\packages\ChromeDriver\2.27.0\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('..\..\WAF\WAF-WebAutomationFramework\WAF\packages\ChromeDriver\2.27.0\build\Selenium.WebDriver.ChromeDriver.targets')" />
+    <Import Project="..\..\WAF\WAF-WebAutomationFramework\WAF\packages\PhantomJS\2.1.1\build\Selenium.WebDriver.PhantomJSDriver.targets" Condition="Exists('..\..\WAF\WAF-WebAutomationFramework\WAF\packages\PhantomJS\2.1.1\build\Selenium.WebDriver.PhantomJSDriver.targets')" />
+
+#Page Object class setup
+
+using OpenQA.Selenium;
+using WAF.Framework.BaseClasses;
+using WAF.Framework.HelperClasses;
+
+namespace WAF.PageObjects
+{
+    class PageObjectTemp
+    {
+        #region PageElements
+        static internal By searchbox = By.XPath(ExcelReader.From(1, 3, 2));
+        static internal By loginLink = By.XPath(ExcelReader.From(1, 3, 3));
+        #endregion
+
+        #region PageNavigations
+        public static void NavigateToLoginPage()
+        {
+            Driver.ClickOn(loginLink);
+        }
+        #endregion
+
+        #region PageActions
+        public static void VerifyPageElements()
+        {
+        }
+        #endregion
+    }
+}
+
+#Test Case class setup
+
+using NUnit.Framework;
+using WAF.Framework.BaseClasses;
+using WAF.PageObjects;
+
+namespace WAF.TestSuite
+{
+    [TestFixture]
+    class TestCaseTemp : BaseSetup
+    {
+        [Test]
+        public void TestCase_01()
+        {
+            Browser.Open();
+            PageObjectTemp.NavigateToLoginPage();
+        }
+    }
+}
+
+#Driver action methods
+
+	Driver.ClickOn(locator);
+	Driver.PressEnter(locator);
+	Driver.InsertText(locator, "");
+	Driver.SelectDropdown(locator, "");
+	Driver.WaitForElement(locator);
+
+	VerifyElement.AreEqual(locator, "");
+	VerifyElement.IsPresent(locator);
+	VerifyElement.TitleIsPresent("");
+	VerifyElement.ButtonIsDisabled(locator);
+
+	Browser.Open();
+	Browser.Close();
+	Browser.Maximize();
+	Browser.GoBack();
+	Browser.SwitchToWindow();
+	Browser.SwitchToParent();
+	Browser.RefreshPage();
 
 
