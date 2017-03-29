@@ -30,7 +30,7 @@ Framework will have master that will be different entity from working project, s
 1.5	Understandable
 
 Framework is usable and understandable by any QA team that can be pluggable to any project even less knowledge automation test engineer will work with code using framework methods.
-#Documentation
+# Documentation
 
 Include these refrences into your new project
 
@@ -62,7 +62,7 @@ Include these refrences into your new project
     <Import Project="..\..\WAF\WAF-WebAutomationFramework\WAF\packages\ChromeDriver\2.27.0\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('..\..\WAF\WAF-WebAutomationFramework\WAF\packages\ChromeDriver\2.27.0\build\Selenium.WebDriver.ChromeDriver.targets')" />
     <Import Project="..\..\WAF\WAF-WebAutomationFramework\WAF\packages\PhantomJS\2.1.1\build\Selenium.WebDriver.PhantomJSDriver.targets" Condition="Exists('..\..\WAF\WAF-WebAutomationFramework\WAF\packages\PhantomJS\2.1.1\build\Selenium.WebDriver.PhantomJSDriver.targets')" />
 
-#Page Object class setup
+# Page Object class setup
 
 using OpenQA.Selenium;
 using WAF.Framework.BaseClasses;
@@ -92,7 +92,7 @@ namespace WAF.PageObjects
     }
 }
 
-#Test Case class setup
+# Test Case class setup
 
 using NUnit.Framework;
 using WAF.Framework.BaseClasses;
@@ -112,7 +112,7 @@ namespace WAF.TestSuite
     }
 }
 
-#Driver action methods
+# Driver action methods
 
 	Driver.ClickOn(locator);
 	Driver.PressEnter(locator);
