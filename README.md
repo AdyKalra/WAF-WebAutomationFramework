@@ -55,10 +55,10 @@ Include these refrences into your new project
       <HintPath>..\WAF\WAF-WebAutomationFramework\WAF\packages\ExtentReports\2.41.0\lib\RelevantCodes.ExtentReports.dll</HintPath>
       <Private>True</Private>
     </Reference>
-
-And these packages
-
+    
   <Import Project="..\..\WAF\WAF-WebAutomationFramework\WAF\packages\IEDriver\3.0.0.1\build\Selenium.WebDriver.IEDriver.targets" Condition="Exists('..\..\WAF\WAF-WebAutomationFramework\WAF\packages\IEDriver\3.0.0.1\build\Selenium.WebDriver.IEDriver.targets')" />
   <Import Project="..\..\WAF\WAF-WebAutomationFramework\WAF\packages\FFDriver\0.13\build\Selenium.WebDriver.FFDriver.targets" Condition="Exists('..\..\WAF\WAF-WebAutomationFramework\WAF\packages\FFDriver\0.13\build\Selenium.WebDriver.FFDriver.targets')" />
   <Import Project="..\..\WAF\WAF-WebAutomationFramework\WAF\packages\ChromeDriver\2.27.0\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('..\..\WAF\WAF-WebAutomationFramework\WAF\packages\ChromeDriver\2.27.0\build\Selenium.WebDriver.ChromeDriver.targets')" />
   <Import Project="..\..\WAF\WAF-WebAutomationFramework\WAF\packages\PhantomJS\2.1.1\build\Selenium.WebDriver.PhantomJSDriver.targets" Condition="Exists('..\..\WAF\WAF-WebAutomationFramework\WAF\packages\PhantomJS\2.1.1\build\Selenium.WebDriver.PhantomJSDriver.targets')" />
+
+
