@@ -1,19 +1,11 @@
 # WAF-Web Automation Framework
 # About
 
-WAF (Web Automation Framework) is GUI test automation framework that can automate testing performance and simplify as much of the testing effort as possible with a minimum set of scripts. Framework is developed under dot net environment using C# language and open source Selenium WebDriver framework libraries to automate web UI elements. 
+WAF (Web Automation Framework) is UI test automation framework that can automate testing performance and simplify as much of the testing effort as possible with a minimum set of scripts. Framework is developed under dot net environment using C# language along with Selenium WebDriver 3.3.0, NUnit 3.6.0, ExtentReports 2.41.0 libraries to automate web UI elements. 
 
-WAF designed to perform automation testing using different browser under different environment, different screen resolution and produce test results into html document.
+WAF designed to perform automation testing using different browser (Chrome, IE, Firefox and PhantomJS) under different environment, different screen resolutions and produce test results into html report document.
 
-Web Automation framework is way to organize the code so that it can be:
-
-•	Reusable
-•	Scalable
-•	Maintainable
-•	Understandable
-•	Workable
-
-1.2	Reusable
+Web Automation framework is way to organize the code so that it can be Reusable, Scalable, Maintainable, Understandable, Workable and Reusable.
 
 DSS WAF (Web Automation Framework) is developed that can be used by multiple users across same or multiple projects, not limited to one single project.
 Using framework can reduce the effort spent on “X” component (library of code) which is already written or available, and by reusing the code will require less or no testing since the available code is not all new since its already in use.
