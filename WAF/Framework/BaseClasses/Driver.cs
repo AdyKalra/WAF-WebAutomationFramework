@@ -5,7 +5,7 @@ using WAF.Framework.HelperClasses;
 
 namespace WAF.Framework.BaseClasses
 {
-    class Driver : Browser
+    public class Driver : Browser
     {
         private static IWebElement element;
         private static SelectElement select;
