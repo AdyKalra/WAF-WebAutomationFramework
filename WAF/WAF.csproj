@@ -72,7 +72,9 @@
     <Compile Include="Framework\HelperClasses\NameGenerator.cs" />
     <Compile Include="Framework\HelperClasses\ReportHelper.cs" />
     <Compile Include="Framework\HelperClasses\ScreenshotHelper.cs" />
+    <Compile Include="Pages\PageObjectModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI Test\QuickTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
@@ -82,10 +84,12 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Regression\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="packages\IEDriver\3.0.0.1\build\Selenium.WebDriver.IEDriver.targets" Condition="Exists('packages\IEDriver\3.0.0.1\build\Selenium.WebDriver.IEDriver.targets')" />
-  <Import Project="packages\FFDriver\0.13\build\Selenium.WebDriver.FFDriver.targets" Condition="Exists('packages\FFDriver\0.13\build\Selenium.WebDriver.FFDriver.targets')" />
-  <Import Project="packages\ChromeDriver\2.27.0\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('packages\ChromeDriver\2.27.0\build\Selenium.WebDriver.ChromeDriver.targets')" />
-  <Import Project="packages\PhantomJS\2.1.1\build\Selenium.WebDriver.PhantomJSDriver.targets" Condition="Exists('packages\PhantomJS\2.1.1\build\Selenium.WebDriver.PhantomJSDriver.targets')" />
+  <Import Project="Packages\IEDriver\3.3.0\build\Selenium.WebDriver.IEDriver.targets" Condition="Exists('packages\IEDriver\3.3.0\build\Selenium.WebDriver.IEDriver.targets')" />
+  <Import Project="Packages\FFDriver\0.13\build\Selenium.WebDriver.FFDriver.targets" Condition="Exists('packages\FFDriver\0.13\build\Selenium.WebDriver.FFDriver.targets')" />
+  <Import Project="Packages\ChromeDriver\2.27.0\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('packages\ChromeDriver\2.27.0\build\Selenium.WebDriver.ChromeDriver.targets')" />
+  <Import Project="Packages\PhantomJS\2.1.1\build\Selenium.WebDriver.PhantomJSDriver.targets" Condition="Exists('packages\PhantomJS\2.1.1\build\Selenium.WebDriver.PhantomJSDriver.targets')" />
 </Project>

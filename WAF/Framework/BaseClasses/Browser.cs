@@ -111,7 +111,7 @@ namespace WAF.Framework.BaseClasses
         {
             Instance.Close();
             Instance.Quit();
-            Instance.Dispose();
+            //Instance.Dispose();
             TestLog.Log(LogStatus.Pass, "Browser closed.");
         }
         public static void Maximize()
