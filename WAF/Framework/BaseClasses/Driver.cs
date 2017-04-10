@@ -31,8 +31,7 @@ namespace WAF.Framework.BaseClasses
         }
         public static void SelectFromDropdown(By locator, string value)
         {
-            Wait(2);
-            select = new SelectElement(GetVisibleElement(locator));
+            select = new SelectElement(GetClickableElement(locator));
             select.SelectByText(value);
             ReportHelper.PassLog("Successfully <b>' " + value + "' </b> dropdown option selected from: <b>" + locator.ToString());
         }

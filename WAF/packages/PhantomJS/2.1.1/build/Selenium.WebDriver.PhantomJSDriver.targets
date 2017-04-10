@@ -1,9 +1,56 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">  
-  <Target Name="CopyFFDriverToBin" BeforeTargets="AfterBuild">
-    <PropertyGroup>
-      <PhantomJSDriverSrcPath>$(MSBuildThisFileDirectory)..\driver\phantomjs.exe</PhantomJSDriverSrcPath>
-      <PhantomJSDriverTargetPath Condition=" '$(PhantomJSDriverTargetPath)' == '' ">$(TargetDir)</PhantomJSDriverTargetPath>
-    </PropertyGroup>
+  <PropertyGroup>
+    <PhantomJSDriverSrcPath>$(MSBuildThisFileDirectory)..\driver\phantomjs.exe</PhantomJSDriverSrcPath>
+    <PhantomJSDriverTargetPath Condition=" '$(PhantomJSDriverTargetPath)' == '' ">$(TargetDir)</PhantomJSDriverTargetPath>
+  </PropertyGroup>
+  <!-- Detect is project type Web or Not. -->
+  <Choose>
+    <When Condition="'$(ProjectTypeIsWeb)' == ''">
+      <PropertyGroup>
+        <!-- Reference: http://www.mztools.com/Articles/2008/MZ2008017.aspx -->
+        <!-- HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\VisualStudio\14.0\Projects -->
+        <ProjectTypeIsWeb Condition="$([System.Text.RegularExpressions.Regex]::IsMatch($(ProjectTypeGuids),'^(.*;)*{349c5851-65df-11da-9384-00065b846f21}(;.*)*$'))">true</ProjectTypeIsWeb>
+        <ProjectTypeIsWeb Condition="'$(ProjectTypeIsWeb)' == ''">false</ProjectTypeIsWeb>
+      </PropertyGroup>
+    </When>
+  </Choose>
+  <!-- Detect definition of compilation symbol that is "_PUBLISH_CHROMEDRIVER", or "PublishPhantomJSDriver" msbuild property. -->
+  <Choose>
+    <When Condition="'$(PublishPhantomJSDriver)' == ''">
+      <PropertyGroup>
+        <PublishPhantomJSDriver Condition="$([System.Text.RegularExpressions.Regex]::IsMatch($(DefineConstants),'^(.*;)*_PUBLISH_CHROMEDRIVER(;.*)*$'))">true</PublishPhantomJSDriver>
+        <PublishPhantomJSDriver Condition="'$(PublishPhantomJSDriver)' == ''">false</PublishPhantomJSDriver>
+      </PropertyGroup>
+    </When>
+  </Choose>
+  <!-- Setup driver file as project item if publishing driver file is enabled. -->
+  <Choose>
+    <When Condition="'$(PublishPhantomJSDriver)|$(ProjectTypeIsWeb)' == 'true|true'">
+      <ItemGroup>
+        <None Include="$(PhantomJSDriverSrcPath)">
+          <Link>phantomjs.exe</Link>
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+          <Visible>False</Visible>
+        </None>
+      </ItemGroup>
+    </When>
+    <When Condition="'$(PublishPhantomJSDriver)|$(ProjectTypeIsWeb)' == 'true|false'">
+      <ItemGroup>
+        <Content Include="$(PhantomJSDriverSrcPath)">
+          <Link>phantomjs.exe</Link>
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+          <Visible>False</Visible>
+        </Content>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <!-- If publishing driver file is disabled (it's default behavior), define "copy" and "clean" build task. -->
+  <Target Name="CopyPhantomJSDriverToBin" BeforeTargets="AfterBuild" Condition="'$(PublishPhantomJSDriver)' == 'false'">
     <Copy SourceFiles="$(PhantomJSDriverSrcPath)" DestinationFiles="$(PhantomJSDriverTargetPath)phantomjs.exe" SkipUnchangedFiles="true"></Copy>
   </Target>
+  <Target Name="DeletePhantomJSDriverFromBin" BeforeTargets="AfterClean" Condition="'$(PublishPhantomJSDriver)' == 'false'">
+    <Delete Files="$(PhantomJSDriverTargetPath)phantomjs.exe"></Delete>
+  </Target>
 </Project>
+
+
