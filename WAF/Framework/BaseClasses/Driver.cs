@@ -53,22 +53,12 @@ namespace WAF.Framework.BaseClasses
             element.SendKeys(Keys.Enter);
             ReportHelper.PassLog("Successfully Pressed Enter on: <b>" + locator);
         }
-
-
-
-
-
         internal static IWebElement Press(By locator)
         {
             element = GetClickableElement(locator);
             return element;
             //element.SendKeys(Keys.Control + Keys.ArrowDown);
         }
-
-
-
-
-
         internal static void SelectFromDropdown(By locator, string value)
         {
             select = new SelectElement(GetClickableElement(locator));
