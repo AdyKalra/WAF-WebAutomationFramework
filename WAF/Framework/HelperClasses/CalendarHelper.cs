@@ -1,4 +1,13 @@
-﻿using OpenQA.Selenium;
+﻿/*
+--------------------------------------------------------------------------------------------------------------------
+Web Automation Framework - WAF v2.0.8
+Designed and Developd by Davron Aliyev
+Copyright (c) 2017 Document Storage Systems, Inc.
+All rights reserved
+--------------------------------------------------------------------------------------------------------------------
+*/
+
+using OpenQA.Selenium;
 using System;
 using System.Globalization;
 using WAF.Framework.BaseClasses;
@@ -7,7 +16,7 @@ namespace WAF.Framework.HelperClasses
 {
     public class CalendarHelper
     {
-        public static void DatePicker(By _calendarIcon, string _date)
+        internal static void DatePicker(By _calendarIcon, string _date)
         {
             if (_date != "")
             {

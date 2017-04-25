@@ -1,4 +1,13 @@
-﻿using System;
+﻿/*
+--------------------------------------------------------------------------------------------------------------------
+Web Automation Framework - WAF v2.0.8
+Designed and Developd by Davron Aliyev
+Copyright (c) 2017 Document Storage Systems, Inc.
+All rights reserved
+--------------------------------------------------------------------------------------------------------------------
+*/
+
+using System;
 using System.Configuration;
 using Excel = Microsoft.Office.Interop.Excel;
 
@@ -6,7 +15,7 @@ namespace WAF.Framework.HelperClasses
 {
     public class ExcelReader
     {
-        public static string ReadFrom(int _sheetNumber, int _columnNumber, int _rowNumber)
+        internal static string ReadFrom(int _sheetNumber, int _columnNumber, int _rowNumber)
         {
             // Excel File Path
             string excelPath = AppDomain.CurrentDomain.BaseDirectory + ConfigurationManager.AppSettings["ExcelPath"];
@@ -24,10 +33,7 @@ namespace WAF.Framework.HelperClasses
             xlApp.Quit();
             return _value;
         }
-
-
-
-        public static void Write()
+        internal static void Write()
         {
             Excel.Application oXL;
             Excel._Workbook oWB;

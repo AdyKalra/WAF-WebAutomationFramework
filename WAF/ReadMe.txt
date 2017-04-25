@@ -1,5 +1,5 @@
-WAF v2.0.7 
-04/07/2017
+WAF v2.0.8
+04/10/2017
 ________________________________________________________________________________________________________________
 
 Page Object Model class example
@@ -96,12 +96,15 @@ XPath samples
 ________________________________________________________________________________________________________________
 
 //button[normalize-space(text())='Sign In']
+
 //button[contains(., 'Save')]
+
 (//button[@id='dropdownMenu1'])[2]
 
 //input[@value='Save']
 
 //th[contains(., 'Description')]
+
 //th[normalize-space(text())='Description']
 
 //a[@href='/MCCDashboardTest/ReleaseNotes']
@@ -111,4 +114,15 @@ ________________________________________________________________________________
 //tr/td[normalize-space(text())='Labs/Procedures']//following-sibling::td[2][normalize-space(text())='Immediately']
 
 //tbody/tr[2]/td[2][contains(., 'Abc Automation')]//preceding-sibling::td[1]/input
+
 //ul[@class=' ']/li[contains(., ' ')]
+
+// 	Select button with user name
+//td[normalize-space(text())='User, Auto']//following-sibling::td/button
+
+
+//	Message popup
+//div[@class='toast-message']
+
+// 	Checkbox with Label
+//label[contains(., 'Administrator')]//preceding-sibling::div

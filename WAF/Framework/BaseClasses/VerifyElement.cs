@@ -1,7 +1,15 @@
-﻿using NUnit.Framework;
+﻿/*
+--------------------------------------------------------------------------------------------------------------------
+Web Automation Framework - WAF v2.0.8
+Designed and Developd by Davron Aliyev
+Copyright (c) 2017 Document Storage Systems, Inc.
+All rights reserved
+--------------------------------------------------------------------------------------------------------------------
+*/
+
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
-using RelevantCodes.ExtentReports;
 using System;
 using WAF.Framework.BaseClasses;
 using WAF.Framework.HelperClasses;
@@ -11,7 +19,20 @@ namespace WAF.BaseClasses
     public class VerifyElement : BaseSetup
     {
         private static IWebElement element;
-        public static void AreEqual(By locator, string expectedElement)
+        internal static void IsTitlePresent(string title)
+        {
+            try
+            {
+                (new WebDriverWait(Browser.Instance, TimeSpan.FromSeconds(10))).Until(ExpectedConditions.TitleContains(title));
+                Assert.AreEqual(title, Browser.Instance.Title);
+                ReportHelper.PassLog("Page Title Verification Passed: <b>" + title);
+            }
+            catch (AssertionException e)
+            {
+                ReportHelper.WarningLog("Page Title Verification Failed: <b>" + e.Message);
+            }
+        }
+        internal static void AreEqual(By locator, string expectedElement)
         {
             try
             {
@@ -25,64 +46,59 @@ namespace WAF.BaseClasses
                 ReportHelper.WarningLog("Expected:  <b>" + expectedElement + "</b><br>But was:  <b>" + actualElement + "</b><br>" + e.Message);
             }
         }
-        public static void IsPresent(By locator)
+        internal static void IsPresent(By locator)
         {
             try
             {
                 element = Driver.GetVisibleElement(locator);
-                Assert.IsTrue(ElementPresentBool(locator));
-                ReportHelper.PassLog("Element is present: " + locator.ToString());
+                Assert.IsTrue(IsElementPresent(locator));
+                ReportHelper.PassLog("Element is present: <b>" + locator.ToString());
             }
             catch (AssertionException e)
             {
-                ReportHelper.WarningLog("Element is not present: " + "<br>" + locator.ToString());
+                ReportHelper.WarningLog("Element is not present: <b>" + locator.ToString() + "</b><br>" + e.Message);
             }
         }
-        public static void IsNotPresent(By locator)
+        internal static void IsNotPresent(By locator)
         {
             if (locator == null)
             {
-                ReportHelper.PassLog("Element is not present: " + locator.ToString());
+                ReportHelper.PassLog("Element is not present: <b>" + locator.ToString());
             }
             else
             {
-                ReportHelper.WarningLog("Element is present: " + "<br>" + locator.ToString());
+                ReportHelper.WarningLog("Element is present: <b>" + locator.ToString());
             }
         }
-        public static void TitleIsPresent(string title)
+        internal static void ButtonIsActive(By locator)
         {
             try
             {
-                (new WebDriverWait(Browser.Instance, TimeSpan.FromSeconds(10))).Until(ExpectedConditions.TitleContains(title));
-                Assert.AreEqual(title, Browser.Instance.Title);
-                TestLog.Log(LogStatus.Pass, "Title is present: " + title);
+                Driver.GetClickableElement(locator);
+                ReportHelper.PassLog("Expected Button is active: <b>" + locator.ToString());
             }
             catch (AssertionException e)
             {
-                string screenName = ScreenshotHelper.TakeScreenshot();
-                string scrrenShotPath = TestLog.AddScreenCapture(screenName);
-                TestLog.Log(LogStatus.Warning, scrrenShotPath + "Title verification failed: " + e.Message);
+                ReportHelper.WarningLog("Button is not active: <b>" + locator.ToString() + "</b><br>" + e.Message);
             }
         }
-        public static void ButtonIsDisabled(By locator)
+        internal static void ButtonIsDisabled(By locator)
         {
             try
             {
-                Assert.IsNotNull(Driver.GetClickableElement((locator)).GetAttribute("disabled"));
-
+                Assert.IsNotNull(Driver.GetVisibleElement((locator)).GetAttribute("disabled"));
+                ReportHelper.PassLog("Button is disabled: <b>" + locator.ToString());
             }
             catch (AssertionException e)
             {
-                string screenName = ScreenshotHelper.TakeScreenshot();
-                string scrrenShotPath = TestLog.AddScreenCapture(screenName);
-                TestLog.Log(LogStatus.Warning, scrrenShotPath + "Button is not disabled: " + e.Message);
+                ReportHelper.WarningLog("Button is not disabled: <b>" + locator.ToString() + "</b><br>" + e.Message);
             }
         }
-        public static bool ElementPresentBool(By by)
+        internal static bool IsElementPresent(By locator)
         {
             try
             {
-                Driver.Instance.FindElement(by);
+                Browser.Instance.FindElement(locator);
                 return true;
             }
             catch (NoSuchElementException)

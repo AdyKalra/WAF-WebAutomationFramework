@@ -1,4 +1,13 @@
-﻿using NUnit.Framework;
+﻿/*
+--------------------------------------------------------------------------------------------------------------------
+Web Automation Framework - WAF v2.0.8
+Designed and Developd by Davron Aliyev
+Copyright (c) 2017 Document Storage Systems, Inc.
+All rights reserved
+--------------------------------------------------------------------------------------------------------------------
+*/
+
+using NUnit.Framework;
 using NUnit.Framework.Interfaces;
 using RelevantCodes.ExtentReports;
 using WAF.Framework.HelperClasses;
