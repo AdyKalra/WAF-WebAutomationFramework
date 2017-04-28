@@ -11,7 +11,6 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using System;
-using System.Threading;
 using WAF.Framework.HelperClasses;
 
 namespace WAF.Framework.BaseClasses
@@ -64,21 +63,6 @@ namespace WAF.Framework.BaseClasses
             select = new SelectElement(GetClickableElement(locator));
             select.SelectByText(value);
             ReportHelper.PassLog("Successfully <b>' " + value + "' </b> dropdown option selected from: <b>" + locator.ToString());
-        }
-        internal static void WaitForElement(By locator)
-        {
-            try
-            {
-                (new WebDriverWait(Instance, TimeSpan.FromSeconds(20))).Until(ExpectedConditions.ElementIsVisible(locator));
-            }
-            catch (Exception)
-            {
-                throw new NoSuchElementException("Element is not found: <b>" + locator.ToString());
-            }
-        }
-        internal static void Wait(int seconds)
-        {
-            Thread.Sleep(seconds / 100);
         }
         internal static IWebElement GetVisibleElement(By locator)
         {
