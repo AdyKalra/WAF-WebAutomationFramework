@@ -30,7 +30,7 @@ namespace WAF.Framework.HelperClasses
                 Driver.ClickOn(_calendarIcon);
                 Driver.ClickOn(By.XPath("//button[@class='btn btn-default btn-sm uib-title']"));
                 // Select the year and month
-                Driver.WaitForElement(By.XPath("//span[contains(.,'March')]"));
+                WaitHelper.WaitForElement(By.XPath("//span[contains(.,'March')]"));
                 // Get the year from calendar
                 string entryYear = Driver.Instance.FindElement(By.XPath("//strong[@class='ng-binding']")).Text.ToString();
                 if (_year == entryYear)
