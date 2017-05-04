@@ -30,16 +30,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="nunit.framework, Version=3.6.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
-      <HintPath>Packages\NUnit\3.6.0\lib\net45\nunit.framework.dll</HintPath>
+    <Reference Include="nunit.framework, Version=3.6.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>Packages\NUnit\3.6.1\lib\net45\nunit.framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="WebDriver, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>Packages\Selenium.WebDriver\3.0.1\lib\net40\WebDriver.dll</HintPath>
+    <Reference Include="WebDriver, Version=3.4.0 Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>Packages\Selenium.WebDriver\3.4.0\lib\net40\WebDriver.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="WebDriver.Support, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>Packages\Selenium.Support\3.0.1\lib\net40\WebDriver.Support.dll</HintPath>
+    <Reference Include="WebDriver.Support, Version=3.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>Packages\Selenium.Support\3.4.0\lib\net40\WebDriver.Support.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
@@ -73,6 +73,7 @@
     <Compile Include="Framework\HelperClasses\ReportHelper.cs" />
     <Compile Include="Framework\HelperClasses\ScreenshotHelper.cs" />
     <Compile Include="Framework\HelperClasses\SearchUser.cs" />
+    <Compile Include="Framework\HelperClasses\WaitHelper.cs" />
     <Compile Include="Pages\ClaimsPage.cs" />
     <Compile Include="Pages\FacilitiesPage.cs" />
     <Compile Include="Pages\iVerifyPage.cs" />
@@ -104,9 +105,12 @@
     <Folder Include="Regression\1.75\" />
     <Folder Include="Regression\2.0\" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="ReadMe.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="Packages\IEDriver\3.3.0\build\Selenium.WebDriver.IEDriver.targets" Condition="Exists('Packages\IEDriver\3.3.0\build\Selenium.WebDriver.IEDriver.targets')" />
-  <Import Project="Packages\FFDriver\0.13\build\Selenium.WebDriver.FFDriver.targets" Condition="Exists('Packages\FFDriver\0.13\build\Selenium.WebDriver.FFDriver.targets')" />
-  <Import Project="Packages\ChromeDriver\2.29\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('Packages\ChromeDriver\2.29\build\Selenium.WebDriver.ChromeDriver.targets')" />
+  <Import Project="Packages\IEDriver\3.4.0\build\Selenium.WebDriver.IEDriver.targets" Condition="Exists('Packages\IEDriver\3.4.0\build\Selenium.WebDriver.IEDriver.targets')" />
+  <Import Project="Packages\FFDriver\0.15.0\build\Selenium.Firefox.WebDriver.targets" Condition="Exists('Packages\FFDriver\0.15.0\build\Selenium.Firefox.WebDriver.targets')" />
+  <Import Project="Packages\ChromeDriver\2.29.0\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('Packages\ChromeDriver\2.29.0\build\Selenium.WebDriver.ChromeDriver.targets')" />
   <Import Project="Packages\PhantomJS\2.1.1\build\Selenium.WebDriver.PhantomJSDriver.targets" Condition="Exists('Packages\PhantomJS\2.1.1\build\Selenium.WebDriver.PhantomJSDriver.targets')" />
 </Project>
