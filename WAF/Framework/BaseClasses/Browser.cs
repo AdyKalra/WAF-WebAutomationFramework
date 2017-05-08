@@ -84,7 +84,7 @@ namespace WAF.Framework.BaseClasses
             InternetExplorerOptions options = new InternetExplorerOptions();
             options.IntroduceInstabilityByIgnoringProtectedModeSettings = true;
             options.IgnoreZoomLevel = true;
-            options.EnsureCleanSession = true;
+            //options.EnsureCleanSession = true;
             options.EnablePersistentHover = false;
             options.EnableNativeEvents = false;
 
