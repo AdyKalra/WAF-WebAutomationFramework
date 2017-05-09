@@ -108,7 +108,7 @@ namespace WAF.Framework.BaseClasses
         }
         internal static void NavigateToUrl(string url)
         {
-            Instance.Manage().Timeouts().SetPageLoadTimeout(TimeSpan.FromSeconds(20));
+            Instance.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(20);
             Instance.Navigate().GoToUrl(url);
             ReportHelper.PassLog("Successfully navigated to: <b>" + url);
         }
@@ -116,7 +116,7 @@ namespace WAF.Framework.BaseClasses
         {
             string url = ConfigurationManager.AppSettings["URL"];
 
-            Instance.Manage().Timeouts().SetPageLoadTimeout(TimeSpan.FromSeconds(20));
+            Instance.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(20);
             Instance.Navigate().GoToUrl(url);
             ReportHelper.PassLog("Successfully navigated to: <b>" + url);
         }

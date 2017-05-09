@@ -24,7 +24,7 @@ namespace WAF.Framework.HelperClasses
             try
             {
                 Screenshot ss = ((ITakesScreenshot)Browser.Instance).GetScreenshot();
-                ss.SaveAsFile(screenshotPath + screenName, System.Drawing.Imaging.ImageFormat.Png);
+                ss.SaveAsFile(screenshotPath + screenName, ScreenshotImageFormat.Png);
             }
             catch (Exception e)
             {

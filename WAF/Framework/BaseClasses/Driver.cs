@@ -18,7 +18,7 @@ namespace WAF.Framework.BaseClasses
     {
         private static IWebElement element;
         private static SelectElement select;
-        internal static void InsertText(By locator, string text)
+        internal static void SendKeys(By locator, string text)
         {
             element = WaitHelper.ElementIsVisible(locator);
             element.Clear();
@@ -53,6 +53,7 @@ namespace WAF.Framework.BaseClasses
         internal static void SelectFromDropdown(By locator, string value)
         {
             select = new SelectElement(WaitHelper.ElementToBeClickable(locator));
+            ClickOn(locator);
             select.SelectByText(value);
             ReportHelper.PassLog("Successfully <b>' " + value + "' </b> dropdown option selected from: <b>" + locator.ToString());
         }
