@@ -36,7 +36,7 @@ namespace WAF.BaseClasses
         {
             try
             {
-                element = Driver.GetVisibleElement(locator);
+                element = WaitHelper.ElementIsVisible(locator);
                 Assert.AreEqual(expectedElement, Driver.Instance.FindElement(locator).Text.Trim());
                 ReportHelper.PassLog("Expected element <b>' " + expectedElement + " '</b> is equal to actual element<b> ' " + element.Text + " '");
             }
@@ -50,7 +50,7 @@ namespace WAF.BaseClasses
         {
             try
             {
-                element = Driver.GetVisibleElement(locator);
+                element = WaitHelper.ElementIsVisible(locator);
                 Assert.IsTrue(IsElementPresent(locator));
                 ReportHelper.PassLog("Element is present: <b>" + locator.ToString());
             }
@@ -74,7 +74,7 @@ namespace WAF.BaseClasses
         {
             try
             {
-                Driver.GetClickableElement(locator);
+                WaitHelper.ElementToBeClickable(locator);
                 ReportHelper.PassLog("Expected Button is active: <b>" + locator.ToString());
             }
             catch (AssertionException e)
@@ -86,7 +86,7 @@ namespace WAF.BaseClasses
         {
             try
             {
-                Assert.IsNotNull(Driver.GetVisibleElement((locator)).GetAttribute("disabled"));
+                Assert.IsNotNull(WaitHelper.ElementIsVisible((locator)).GetAttribute("disabled"));
                 ReportHelper.PassLog("Button is disabled: <b>" + locator.ToString());
             }
             catch (AssertionException e)

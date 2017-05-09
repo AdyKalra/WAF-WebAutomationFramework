@@ -11,30 +11,30 @@ using WAF.Framework.BaseClasses;
 
 namespace WAF.Pages
 {
-    class PageObjectModel
-    {
-        #region WebElements
-        static internal By element = By.XPath("");
+	class PageObjectModel
+	{
+		#region WebElements
+		static internal By element = By.XPath("");
 
-        #endregion
+		#endregion
 
-        #region Action
-        public static void VerifyPageElements()
-        {
-            VerifyElement.IsPresent(element);
-        }
+		#region Action
+		public static void VerifyPageElements()
+		{
+			VerifyElement.IsPresent(element);
+		}
 
-        #endregion
+		#endregion
 
-        #region Navigation
-        public static void NavigateToPage()
-        {
-            Driver.ClickOn(element);
-            VerifyElement.AreEqual(element, "");
-        }
+		#region Navigation
+		public static void NavigateToPage()
+		{
+			Driver.ClickOn(element);
+			VerifyElement.AreEqual(element, "");
+		}
 
-        #endregion
-    }
+		#endregion
+	}
 }
 
 
@@ -48,15 +48,15 @@ using WAF.Framework.BaseClasses;
 
 namespace WAF.UI_Test
 {
-    [TestFixture]
-    class QuickTest : BaseSetup
-    {
-        [Test]
-        public void QuickTest_01()
-        {
-            Browser.Open();
-        }
-    }
+	[TestFixture]
+	class QuickTest : BaseSetup
+	{
+		[Test]
+		public void QuickTest_01()
+		{
+			Browser.Open();
+		}
+	}
 }
 
 
@@ -137,8 +137,16 @@ ________________________________________________________________________________
 
 // Dismiss the Print popup window
 
-            IAlert alert = Browser.Instance.SwitchTo().Alert();
-            alert.Dismiss();
+			IAlert alert = Browser.Instance.SwitchTo().Alert();
+			alert.Dismiss();
+
+
+// Select the checkbox if its not been selected.
+
+			if (!Instance.FindElement(locator).GetAttribute("aria-checked").Equals("true"))
+			{
+				Instance.FindElement(locator).Click();
+			}
 
 
 
