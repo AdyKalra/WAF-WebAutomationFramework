@@ -44,12 +44,6 @@ namespace WAF.Framework.BaseClasses
             //    //}
             //    ReportHelper.PassLog("Successfully clicked on: <b>" + locator.ToString());
         }
-        internal static void PressEnter(By locator)
-        {
-            element = WaitHelper.ElementToBeClickable(locator);
-            element.SendKeys(Keys.Enter);
-            ReportHelper.PassLog("Successfully Pressed Enter on: <b>" + locator);
-        }
         internal static void SelectFromDropdown(By locator, string value)
         {
             select = new SelectElement(WaitHelper.ElementToBeClickable(locator));
