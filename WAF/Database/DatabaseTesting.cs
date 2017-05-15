@@ -6,36 +6,47 @@ using System.Configuration;
 using System.Data.SqlClient;
 using WAF.Framework.HelperClasses;
 
+
 namespace WAF.Database
 {
     [TestFixture]
     class DatabaseTesting
     {
-        // Excution Query
-        string selectQuery = "SELECT * FROM TestTable";
-        string insertQuery = "INSERT INTO TestTable (column1, column2, column3) VALUES (10, 20, 30), (22, 33, 44), (77, 88, 99);";
-        string deleteTableQuery = "DELETE FROM TestTable";
-
+        // Database table
+        static internal string table = "TestTable";
+        // SQL Queries
+        internal string selectQuery = "SELECT * FROM " + table;
+        string insertQuery = "INSERT INTO " + table + " (column1, column2, column3) VALUES (10, 20, 30), (22, 33, 44), (77, 88, 99);";
+        string deleteTableQuery = "DELETE FROM " + table;
+        // Report Log
         protected ExtentReports ReportLog;
         protected static ExtentTest TestLog;
 
         [Test]
         public void DBTest()
         {
-            // Connect to Databse
-            SqlConnection myDatabase = new SqlConnection(ConfigurationManager.ConnectionStrings["UserDBConnectionString"].ToString());
-            myDatabase.Open();
-            // Excute SQL command
+            // Connect to Database
+            SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["UserDBConnectionString"].ToString());
+            connection.Open();
 
-            SqlCommand cmd = new SqlCommand(selectQuery, myDatabase);
-            SqlDataReader dr = cmd.ExecuteReader();
-            // Run Test
-            if (dr.HasRows)
+            // ExecuteNonQuery - use this method when you don’t expect a result (perhaps and update statement, or a call to a Stored Procedure that returns no resultset)
+            var command = connection.CreateCommand();
+            command.CommandText = deleteTableQuery;
+            command.ExecuteNonQuery();
+            command.CommandText = insertQuery;
+            command.ExecuteNonQuery();
+
+            // SqlDataReader - which represents a forward-only stream of rows from the database, columns of each row can be accessed by index or name
+            SqlCommand cmd = new SqlCommand(selectQuery, connection);
+            SqlDataReader dataReader = cmd.ExecuteReader();
+
+            // Run the Test
+            if (dataReader.HasRows)
             {
                 int count = 1;
-                while (dr.Read())
+                while (dataReader.Read())
                 {
-                    var dbValue = dr.GetValue(0);
+                    var dbValue = dataReader.GetValue(0);
                     var exlValue = ExcelReader.ReadFrom(1, 1, count);
                     count = count + 1;
                     try
@@ -49,8 +60,8 @@ namespace WAF.Database
                     }
                 }
             }
-            // Close Database
-            myDatabase.Close();
+            // Close connection
+            connection.Close();
         }
 
         [SetUp]
