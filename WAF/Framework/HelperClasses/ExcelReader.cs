@@ -9,6 +9,7 @@ All rights reserved
 
 using System;
 using System.Configuration;
+using System.Diagnostics;
 using Excel = Microsoft.Office.Interop.Excel;
 
 namespace WAF.Framework.HelperClasses
@@ -30,7 +31,16 @@ namespace WAF.Framework.HelperClasses
             range = xlWorkSheet.UsedRange;
             int columnNumber = _columnNumber;
             string _value = ((range.Cells[_rowNumber, _columnNumber] as Excel.Range).Text);
+            xlWorkBook.Close();
             xlApp.Quit();
+
+
+            Process excelProcess = Process.GetProcessesByName("EXCEL")[0];
+            if (!excelProcess.CloseMainWindow())
+            {
+                excelProcess.Kill();
+            }
+
             return _value;
         }
         internal static void Write()

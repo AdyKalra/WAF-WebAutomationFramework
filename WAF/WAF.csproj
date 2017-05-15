@@ -63,13 +63,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Database\DatabaseTesting.cs" />
     <Compile Include="Framework\BaseClasses\BaseSetup.cs" />
     <Compile Include="Framework\BaseClasses\Browser.cs" />
     <Compile Include="Framework\BaseClasses\Driver.cs" />
     <Compile Include="Framework\BaseClasses\VerifyElement.cs" />
     <Compile Include="Framework\HelperClasses\CalendarHelper.cs" />
+    <Compile Include="Framework\HelperClasses\DatabaseHelper.cs" />
     <Compile Include="Framework\HelperClasses\ExcelReader.cs" />
-    <Compile Include="Framework\HelperClasses\NameGenerator.cs" />
+    <Compile Include="Framework\HelperClasses\KeyHelper.cs" />
+    <Compile Include="Framework\HelperClasses\RandomNameHelper.cs" />
     <Compile Include="Framework\HelperClasses\ReportHelper.cs" />
     <Compile Include="Framework\HelperClasses\ScreenshotHelper.cs" />
     <Compile Include="Framework\HelperClasses\SearchUser.cs" />
@@ -92,7 +95,7 @@
     <Compile Include="UI Test\HomePageTest.cs" />
     <Compile Include="UI Test\iVerifyPageTest.cs" />
     <Compile Include="UI Test\LoginPageTest.cs" />
-    <Compile Include="UI Test\SettingsTest.cs" />
+    <Compile Include="UI Test\SettingsPageTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />

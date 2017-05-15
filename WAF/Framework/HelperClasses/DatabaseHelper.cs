@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -8,17 +9,20 @@ namespace WAF.Framework.HelperClasses
     {
 
         //Open the connection
-        public static SqlConnection DBConnect(this SqlConnection sqlConnection, string connectionString)
+        public static SqlConnection DBConnect()
         {
             try
             {
-                sqlConnection = new SqlConnection(connectionString);
-                sqlConnection.Open();
-                return sqlConnection;
+                SqlConnection connect = new SqlConnection(ConfigurationManager.ConnectionStrings["UserDBConnectionString"].ToString());
+                connect.Open();
+                return connect;
+                //sqlConnection = new SqlConnection(connectionString);
+                //sqlConnection.Open();
+                //return sqlConnection;
             }
             catch (Exception e)
             {
-                //LogHelpers.Write("ERROR :: " + e.Message);
+                Console.WriteLine("ERROR :: " + e.Message);
             }
 
             return null;
@@ -33,7 +37,7 @@ namespace WAF.Framework.HelperClasses
             }
             catch (Exception e)
             {
-                //LogHelpers.Write("ERROR :: " + e.Message);
+                Console.WriteLine("ERROR :: " + e.Message);
             }
         }
 
