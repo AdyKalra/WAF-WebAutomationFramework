@@ -63,7 +63,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Database\DatabaseTesting.cs" />
+    <Compile Include="Database\DatabaseTest.cs" />
     <Compile Include="Framework\BaseClasses\BaseSetup.cs" />
     <Compile Include="Framework\BaseClasses\Browser.cs" />
     <Compile Include="Framework\BaseClasses\Driver.cs" />
@@ -78,6 +78,7 @@
     <Compile Include="Framework\HelperClasses\SearchUser.cs" />
     <Compile Include="Framework\HelperClasses\WaitHelper.cs" />
     <Compile Include="Pages\ClaimsPage.cs" />
+    <Compile Include="Pages\DashboardReportsPage.cs" />
     <Compile Include="Pages\FacilitiesPage.cs" />
     <Compile Include="Pages\iVerifyPage.cs" />
     <Compile Include="Pages\QueuesPage.cs" />
@@ -92,10 +93,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Regression\1.5\HCFA.cs" />
     <Compile Include="Regression\1.5\UB.cs" />
+    <Compile Include="UI Test\DashboardReportsPageTest.cs" />
     <Compile Include="UI Test\HomePageTest.cs" />
     <Compile Include="UI Test\iVerifyPageTest.cs" />
     <Compile Include="UI Test\LoginPageTest.cs" />
+    <Compile Include="UI Test\QueuesPageTest.cs" />
     <Compile Include="UI Test\SettingsPageTest.cs" />
+    <Compile Include="UI Test\UsersPageTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />

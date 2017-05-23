@@ -127,6 +127,8 @@ ________________________________________________________________________________
 // 	Checkbox with Label
 //label[contains(., 'Administrator')]//preceding-sibling::div
 
+//  Select with Partial Attribute
+//ul[contains(@style,'display: block;')]
 
 
 
@@ -149,4 +151,7 @@ ________________________________________________________________________________
 			}
 
 
-
+// Convert Date to different format
+DateTime.Parse("05/22/2017").ToString("dddd MMM dd, yyyy")
+// Get todays date
+string todaysEndDate = DateTime.Now.ToString("dddd MMMM dd, yyyy");

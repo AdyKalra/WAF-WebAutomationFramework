@@ -18,6 +18,7 @@ namespace WAF.Framework.BaseClasses
     {
         protected ExtentReports ReportLog;
         protected static ExtentTest TestLog;
+
         [SetUp]
         public void BaseInitialize()
         {

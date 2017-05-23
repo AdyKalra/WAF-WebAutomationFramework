@@ -87,7 +87,6 @@ namespace WAF.Framework.BaseClasses
             //options.EnsureCleanSession = true;
             options.EnablePersistentHover = false;
             options.EnableNativeEvents = false;
-
             //options.AddAdditionalCapability(CapabilityType.AcceptSslCertificates, true);
             return options;
         }
