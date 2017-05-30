@@ -77,11 +77,14 @@
     <Compile Include="Framework\HelperClasses\ScreenshotHelper.cs" />
     <Compile Include="Framework\HelperClasses\SearchUser.cs" />
     <Compile Include="Framework\HelperClasses\WaitHelper.cs" />
+    <Compile Include="Pages\BatchesPage.cs" />
     <Compile Include="Pages\ClaimsPage.cs" />
     <Compile Include="Pages\DashboardReportsPage.cs" />
+    <Compile Include="Pages\DiagnosticsPage.cs" />
     <Compile Include="Pages\FacilitiesPage.cs" />
     <Compile Include="Pages\iVerifyPage.cs" />
     <Compile Include="Pages\QueuesPage.cs" />
+    <Compile Include="Pages\SideNavigationBar.cs" />
     <Compile Include="Pages\UserDropdownMenu.cs" />
     <Compile Include="Pages\Footer.cs" />
     <Compile Include="Pages\HomePage.cs" />
@@ -94,11 +97,13 @@
     <Compile Include="Regression\1.5\HCFA.cs" />
     <Compile Include="Regression\1.5\UB.cs" />
     <Compile Include="UI Test\DashboardReportsPageTest.cs" />
+    <Compile Include="UI Test\DiagnosticsTest.cs" />
     <Compile Include="UI Test\HomePageTest.cs" />
     <Compile Include="UI Test\iVerifyPageTest.cs" />
     <Compile Include="UI Test\LoginPageTest.cs" />
     <Compile Include="UI Test\QueuesPageTest.cs" />
     <Compile Include="UI Test\SettingsPageTest.cs" />
+    <Compile Include="UI Test\UserRolesTest.cs" />
     <Compile Include="UI Test\UsersPageTest.cs" />
   </ItemGroup>
   <ItemGroup>

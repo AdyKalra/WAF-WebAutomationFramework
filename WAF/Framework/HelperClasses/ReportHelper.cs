@@ -36,6 +36,10 @@ namespace WAF.Framework.HelperClasses
         {
             TestLog.Log(LogStatus.Pass, _message);
         }
+        internal static void InfoLog(string _message)
+        {
+            TestLog.Log(LogStatus.Info, _message);
+        }
         internal static void FailLog(string _message)
         {
             string screenName = ScreenshotHelper.TakeScreenshot();

@@ -23,7 +23,7 @@ namespace WAF.Framework.BaseClasses
             element = WaitHelper.ElementIsVisible(locator);
             element.Clear();
             element.SendKeys(text);
-            ReportHelper.PassLog("Successfully <b>' " + text + "' </b> text inserted into: <b>" + locator.ToString());
+            ReportHelper.PassLog("Successfully text inserted into: <br>" + text + "<br>" + locator.ToString());
         }
         internal static void ClickOn(By locator)
         {
@@ -31,7 +31,7 @@ namespace WAF.Framework.BaseClasses
             element = WaitHelper.ElementToBeClickable(locator);
             Actions actions = new Actions(Instance);
             actions.MoveToElement(element).Click().Perform();
-            ReportHelper.PassLog("Successfully Clicked on: <b>" + locator.ToString());
+            ReportHelper.PassLog("Successfully clicked on: <br>" + locator.ToString());
 
             //****************************************************************************************
             ////  This block of code can be use for any browser other then IE 11 for Click event.
@@ -49,7 +49,7 @@ namespace WAF.Framework.BaseClasses
             select = new SelectElement(WaitHelper.ElementToBeClickable(locator));
             ClickOn(locator);
             select.SelectByText(value);
-            ReportHelper.PassLog("Successfully <b>' " + value + "' </b> dropdown option selected from: <b>" + locator.ToString());
+            ReportHelper.PassLog("Successfully dropdown option is selected: <br>" + value + "<br>" + locator.ToString());
         }
         internal static void SelectCheckbox(By locator)
         {
@@ -57,8 +57,25 @@ namespace WAF.Framework.BaseClasses
             if (!Instance.FindElement(locator).GetAttribute("aria-checked").Equals("true"))
             {
                 Instance.FindElement(locator).Click();
+                ReportHelper.PassLog("Successfully checkbox is checked: <br>" + locator);
             }
-            ReportHelper.PassLog("Successfully <b>' " + locator + "' </b> checkbox is checked");
+            else
+            {
+                ReportHelper.WarningLog("Checkbox is alrady checked: <br>" + locator);
+            }
+        }
+        internal static void SelectUnCheckbox(By locator)
+        {
+            WaitHelper.ElementExists(locator);
+            if (Instance.FindElement(locator).GetAttribute("aria-checked").Equals("true"))
+            {
+                Instance.FindElement(locator).Click();
+                ReportHelper.PassLog("Successfully checkbox is unchecked: <br>" + locator);
+            }
+            else
+            {
+                ReportHelper.WarningLog("Checkbox is not checked for uncheck: <br>" + locator);
+            }
         }
     }
 }

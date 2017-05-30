@@ -25,11 +25,11 @@ namespace WAF.BaseClasses
             {
                 (new WebDriverWait(Browser.Instance, TimeSpan.FromSeconds(10))).Until(ExpectedConditions.TitleContains(title));
                 Assert.AreEqual(title, Browser.Instance.Title);
-                ReportHelper.PassLog("Page Title Verification Passed: <b>" + title);
+                ReportHelper.PassLog("Title Verification Passed: <br>" + title);
             }
             catch (AssertionException e)
             {
-                ReportHelper.WarningLog("Page Title Verification Failed: <b>" + e.Message);
+                ReportHelper.WarningLog("Title Verification Failed: <br>" + e.Message);
             }
         }
         internal static void AreEqual(By locator, string expectedElement)
@@ -38,12 +38,12 @@ namespace WAF.BaseClasses
             {
                 element = WaitHelper.ElementIsVisible(locator);
                 Assert.AreEqual(expectedElement, Driver.Instance.FindElement(locator).Text.Trim());
-                ReportHelper.PassLog("Expected element <b>' " + expectedElement + " '</b> is equal to actual element<b> ' " + element.Text + " '");
+                ReportHelper.PassLog("Expected:<b>" + expectedElement + "</b><br>Actual:<b>" + element.Text + "</b>");
             }
             catch (AssertionException e)
             {
                 string actualElement = Browser.Instance.FindElement(locator).Text.Trim();
-                ReportHelper.WarningLog("Expected:  <b>" + expectedElement + "</b><br>But was:  <b>" + actualElement + "</b><br>" + e.Message);
+                ReportHelper.WarningLog("Expected: <b>" + expectedElement + "</b><br>Actual: <b>" + element.Text + "</b>");
             }
         }
         internal static void IsPresent(By locator)
@@ -52,22 +52,22 @@ namespace WAF.BaseClasses
             {
                 element = WaitHelper.ElementIsVisible(locator);
                 Assert.IsTrue(IsElementPresent(locator));
-                ReportHelper.PassLog("Element is present: <b>" + locator.ToString());
+                ReportHelper.PassLog("Expected element is present: <br>" + locator);
             }
             catch (AssertionException e)
             {
-                ReportHelper.WarningLog("Element is not present: <b>" + locator.ToString() + "</b><br>" + e.Message);
+                ReportHelper.WarningLog("Expected element is not present: <br>" + locator.ToString() + "<br>" + e.Message);
             }
         }
         internal static void IsNotPresent(By locator)
         {
             if (locator == null)
             {
-                ReportHelper.PassLog("Element is not present: <b>" + locator.ToString());
+                ReportHelper.PassLog("Expected element is not present: <br>" + locator.ToString());
             }
             else
             {
-                ReportHelper.WarningLog("Element is present: <b>" + locator.ToString());
+                ReportHelper.WarningLog("Expected element is present: <br>" + locator.ToString());
             }
         }
         internal static void ButtonIsActive(By locator)
@@ -75,11 +75,11 @@ namespace WAF.BaseClasses
             try
             {
                 WaitHelper.ElementToBeClickable(locator);
-                ReportHelper.PassLog("Expected Button is active: <b>" + locator.ToString());
+                ReportHelper.PassLog("Expected button is active: <br>" + locator.ToString());
             }
             catch (AssertionException e)
             {
-                ReportHelper.WarningLog("Button is not active: <b>" + locator.ToString() + "</b><br>" + e.Message);
+                ReportHelper.WarningLog("Expected button is not active: <br>" + locator.ToString() + "<br>" + e.Message);
             }
         }
         internal static void ButtonIsDisabled(By locator)
@@ -87,11 +87,11 @@ namespace WAF.BaseClasses
             try
             {
                 Assert.IsNotNull(WaitHelper.ElementIsVisible((locator)).GetAttribute("disabled"));
-                ReportHelper.PassLog("Button is disabled: <b>" + locator.ToString());
+                ReportHelper.PassLog("Expected button is disabled: <br>" + locator.ToString());
             }
             catch (AssertionException e)
             {
-                ReportHelper.WarningLog("Button is not disabled: <b>" + locator.ToString() + "</b><br>" + e.Message);
+                ReportHelper.WarningLog("Expected button is not disabled: <br>" + locator.ToString() + "<br>" + e.Message);
             }
         }
         internal static bool IsElementPresent(By locator)

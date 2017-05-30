@@ -142,7 +142,7 @@ ________________________________________________________________________________
 			IAlert alert = Browser.Instance.SwitchTo().Alert();
 			alert.Dismiss();
 
-
+**************************************************************
 // Select the checkbox if its not been selected.
 
 			if (!Instance.FindElement(locator).GetAttribute("aria-checked").Equals("true"))
@@ -150,8 +150,21 @@ ________________________________________________________________________________
 				Instance.FindElement(locator).Click();
 			}
 
-
+***************************************************************
 // Convert Date to different format
 DateTime.Parse("05/22/2017").ToString("dddd MMM dd, yyyy")
 // Get todays date
 string todaysEndDate = DateTime.Now.ToString("dddd MMMM dd, yyyy");
+
+*****************************************************************
+
+// Read total rows and verify
+
+            // Row path
+            By xPath = By.XPath("//tr[@ng-repeat='set in Settings track by $index']");
+            // Collect total rows
+            IReadOnlyCollection<IWebElement> collection = Browser.Instance.FindElements(xPath);
+            // Convert to String
+            string totalRow = collection.Count.ToString();
+            // Verify 
+            VerifyElement.AreEqual(totalSettings, "Total " + totalRow + " Settings");
