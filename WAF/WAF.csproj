@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database\DatabaseTest.cs" />
+    <Compile Include="Database\GridSetup.cs" />
     <Compile Include="Framework\BaseClasses\BaseSetup.cs" />
     <Compile Include="Framework\BaseClasses\Browser.cs" />
     <Compile Include="Framework\BaseClasses\Driver.cs" />
@@ -85,6 +86,7 @@
     <Compile Include="Pages\iVerifyPage.cs" />
     <Compile Include="Pages\QueuesPage.cs" />
     <Compile Include="Pages\SideNavigationBar.cs" />
+    <Compile Include="Pages\SuspendedClaimsPage.cs" />
     <Compile Include="Pages\UserDropdownMenu.cs" />
     <Compile Include="Pages\Footer.cs" />
     <Compile Include="Pages\HomePage.cs" />

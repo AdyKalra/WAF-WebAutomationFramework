@@ -25,7 +25,7 @@ namespace WAF.Database
         protected ExtentReports ReportLog;
         protected static ExtentTest TestLog;
 
-        [Test]
+        //[Test]
         public void DBTestCase()
         {
             // Connect to Database
