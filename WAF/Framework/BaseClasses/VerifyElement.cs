@@ -59,6 +59,22 @@ namespace WAF.BaseClasses
                 ReportHelper.WarningLog("Expected element is not present: <br>" + locator.ToString() + "<br>" + e.Message);
             }
         }
+        internal static void IsHidden(By locator)
+        {
+            try
+            {
+                element = WaitHelper.ElementExists(locator);
+                if (Browser.Instance.FindElement(locator).GetAttribute("aria-hidden").Equals("true"))
+                {
+                    ReportHelper.PassLog("Expected element is hidden: <br>" + locator);
+                }
+                else ReportHelper.WarningLog("Expected element is not hidden.");
+            }
+            catch (AssertionException e)
+            {
+                ReportHelper.WarningLog("Expected element is not hidden: <br>" + locator.ToString() + "<br>" + e.Message);
+            }
+        }
         internal static void IsNotPresent(By locator)
         {
             if (locator == null)

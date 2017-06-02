@@ -46,5 +46,6 @@ namespace WAF.Framework.HelperClasses
             string screenShotPath = TestLog.AddScreenCapture("screenshots/" + screenName);
             TestLog.Log(LogStatus.Fail, screenShotPath + _message);
         }
+
     }
 }

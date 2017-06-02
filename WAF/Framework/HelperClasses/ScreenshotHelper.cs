@@ -32,5 +32,6 @@ namespace WAF.Framework.HelperClasses
             }
             return screenName;
         }
+
     }
 }
