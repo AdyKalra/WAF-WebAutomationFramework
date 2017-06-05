@@ -64,7 +64,7 @@ namespace WAF.Framework.BaseClasses
                 ReportHelper.WarningLog("Checkbox is alrady checked: <br>" + locator);
             }
         }
-        internal static void SelectUnCheckbox(By locator)
+        internal static void UncheckCheckbox(By locator)
         {
             WaitHelper.ElementExists(locator);
             if (Instance.FindElement(locator).GetAttribute("aria-checked").Equals("true"))

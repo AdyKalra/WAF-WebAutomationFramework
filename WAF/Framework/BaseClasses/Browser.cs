@@ -114,7 +114,7 @@ namespace WAF.Framework.BaseClasses
         internal static void Open()
         {
             string url = ConfigurationManager.AppSettings["URL"];
-
+            ReportHelper.InfoLog("<b>Step 1 - </b>Navigate to <b>" + url);
             Instance.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(20);
             Instance.Navigate().GoToUrl(url);
             ReportHelper.PassLog("Successfully navigated to: <b>" + url);

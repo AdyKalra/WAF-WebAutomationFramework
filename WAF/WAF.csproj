@@ -82,6 +82,7 @@
     <Compile Include="Pages\ClaimsPage.cs" />
     <Compile Include="Pages\DashboardReportsPage.cs" />
     <Compile Include="Pages\DiagnosticsPage.cs" />
+    <Compile Include="Pages\ErrorQueuePage.cs" />
     <Compile Include="Pages\FacilitiesPage.cs" />
     <Compile Include="Pages\iVerifyPage.cs" />
     <Compile Include="Pages\QueuesPage.cs" />
@@ -100,6 +101,7 @@
     <Compile Include="Regression\1.5\UB.cs" />
     <Compile Include="UI Test\DashboardReportsPageTest.cs" />
     <Compile Include="UI Test\DiagnosticsTest.cs" />
+    <Compile Include="UI Test\ErrorQueuePageTest.cs" />
     <Compile Include="UI Test\HomePageTest.cs" />
     <Compile Include="UI Test\iVerifyPageTest.cs" />
     <Compile Include="UI Test\LoginPageTest.cs" />
